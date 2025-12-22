@@ -1,4 +1,5 @@
 import 'package:chat_app/firebase_options.dart';
+import 'package:chat_app/pages/chat_page.dart';
 import 'package:chat_app/pages/login_pages.dart';
 
 import 'package:chat_app/pages/registeration_page.dart';
@@ -19,11 +20,12 @@ class ChatApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         RegisterationPage.id: (context) => RegisterationPage(),
-        'LoginPages': (context) => LoginPages(),
+        LoginPages.id: (context) => LoginPages(),
+        ChatPage.id: (context) => ChatPage(),
       },
 
       debugShowCheckedModeBanner: false,
-      initialRoute: 'LoginPages',
+      initialRoute: LoginPages.id,
     );
   }
 }

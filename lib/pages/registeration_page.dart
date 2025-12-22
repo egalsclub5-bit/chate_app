@@ -1,4 +1,8 @@
 import 'package:chat_app/constans.dart';
+import 'package:chat_app/helper/firebase_helpe.dart';
+import 'package:chat_app/helper/show_snak_bar.dart';
+
+import 'package:chat_app/pages/chat_page.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -35,7 +39,7 @@ class _RegisterationPageState extends State<RegisterationPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/images/scholar.png'),
+                Image.asset(KLogo),
 
                 Text(
                   'Scholar Chat',
@@ -58,13 +62,13 @@ class _RegisterationPageState extends State<RegisterationPage> {
                     ),
                   ],
                 ),
-                CustomTextField(
+                CustomTextFormField(
                   onchange: (data) {
                     email = data;
                   },
                   textHint: 'Email',
                 ),
-                CustomTextField(
+                CustomTextFormField(
                   onchange: (data) {
                     password = data;
                   },
@@ -82,8 +86,13 @@ class _RegisterationPageState extends State<RegisterationPage> {
                       isLoading = true;
                       setState(() {});
                       try {
-                        await registerUser();
-                        showSnakBar(context, 'sucess');
+                        await FirebaseHelpe.register(
+                          email: email,
+                          password: password,
+                        );
+                        Navigator.pushNamed(context, ChatPage.id);
+                        //   await registerUser();
+                        // showSnakBar(context, 'sucess');
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           showSnakBar(
@@ -93,6 +102,8 @@ class _RegisterationPageState extends State<RegisterationPage> {
                         } else if (e.code == 'email-already-in-use') {
                           showSnakBar(context, 'The account already exists.');
                         }
+                      } catch (e) {
+                        showSnakBar(context, 'fuck');
                       }
                       isLoading = false;
                       setState(() {});
@@ -129,17 +140,11 @@ class _RegisterationPageState extends State<RegisterationPage> {
     );
   }
 
-  void showSnakBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
-  }
-
-  Future<void> registerUser() async {
-    var auth = FirebaseAuth.instance;
-    UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-      email: email!,
-      password: password!,
-    );
-  }
+  // Future<void> registerUser() async {
+  //   var auth = FirebaseAuth.instance;
+  //   await auth.createUserWithEmailAndPassword(
+  //     email: email!,
+  //     password: password!,
+  //   );
+  // }
 }

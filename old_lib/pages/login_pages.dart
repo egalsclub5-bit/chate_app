@@ -37,8 +37,8 @@ class LoginPages extends StatelessWidget {
                 ),
               ],
             ),
-            CustomTextField(textHint: 'Email'),
-            CustomTextField(textHint: 'password'),
+            CustomTextFormField(textHint: 'Email'),
+            CustomTextFormField(textHint: 'password'),
             CustomButton(title: ''),
             Padding(
               padding: const EdgeInsets.all(6.0),

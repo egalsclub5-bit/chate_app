@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({super.key, this.ontap,  required this.title});
+  CustomButton({super.key, this.ontap, required this.title});
   String title;
   VoidCallback? ontap;
   @override
@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
           ),
-        
+
           width: double.infinity,
           height: 50,
           child: Center(
