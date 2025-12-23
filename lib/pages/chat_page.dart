@@ -1,9 +1,13 @@
 import 'package:chat_app/constans.dart';
+import 'package:chat_app/helper/firebase_helpe.dart';
 import 'package:chat_app/widgets/chat_buble.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  TextEditingController controller = TextEditingController();
+  ChatPage({super.key});
   static String id = 'ChatPage';
   @override
   Widget build(BuildContext context) {
@@ -30,9 +34,33 @@ class ChatPage extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemBuilder: (BuildContext, Index) {
-                //
                 return ChatBuble();
               },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: TextField(
+              controller: controller,
+
+              onSubmitted: (data) {
+                FirebaseHelpe.addUser(data);
+                controller.clear();
+              },
+
+              decoration: InputDecoration(
+                hintText: 'send massege',
+                hintStyle: TextStyle(color: KPrimaryColor),
+                suffixIcon: Icon(Icons.send, color: KPrimaryColor),
+                focusColor: KPrimaryColor,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: KPrimaryColor),
+                ),
+              ),
             ),
           ),
         ],

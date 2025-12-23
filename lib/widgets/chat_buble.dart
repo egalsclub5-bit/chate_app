@@ -21,7 +21,7 @@ class ChatBuble extends StatelessWidget {
           color: KPrimaryColor,
         ),
         child: Text(
-          'wlecme to chat app can i help you',
+          'i will put my penus in your vegina ya ibrahem',
           style: TextStyle(color: Colors.white),
         ),
       ),
