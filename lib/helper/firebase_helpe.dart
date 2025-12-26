@@ -1,8 +1,12 @@
+import 'package:chat_app/constans.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
-CollectionReference message = FirebaseFirestore.instance.collection('message');
+CollectionReference message = FirebaseFirestore.instance.collection(
+  KpmessagesCollection,
+  
+);
 
 class FirebaseHelpe {
   static Future<UserCredential> login({String? email, String? password}) async {
@@ -19,10 +23,11 @@ class FirebaseHelpe {
     return await auth.createUserWithEmailAndPassword(
       email: email!,
       password: password!,
-    );   
+    );
   }
 
   static Future<void> addUser(sendmessage) {
-    return message.add({'message': sendmessage});
+    var email;
+    return message.add({'message': sendmessage,'id':email});
   }
 }

@@ -1,9 +1,10 @@
 import 'package:chat_app/constans.dart';
+import 'package:chat_app/models/message_model.dart';
 import 'package:flutter/material.dart';
 
 class ChatBuble extends StatelessWidget {
-  const ChatBuble({super.key});
-
+  const  ChatBuble({required this.message});
+  final  MessageModel message;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -21,7 +22,7 @@ class ChatBuble extends StatelessWidget {
           color: KPrimaryColor,
         ),
         child: Text(
-          'i will put my penus in your vegina ya ibrahem',
+          message.message,
           style: TextStyle(color: Colors.white),
         ),
       ),
