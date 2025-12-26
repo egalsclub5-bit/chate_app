@@ -19,7 +19,7 @@ class FirebaseHelpe {
     return await auth.createUserWithEmailAndPassword(
       email: email!,
       password: password!,
-    );
+    );   
   }
 
   static Future<void> addUser(sendmessage) {

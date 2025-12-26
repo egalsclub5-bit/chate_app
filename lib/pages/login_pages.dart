@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginPages extends StatefulWidget {
-  LoginPages({super.key});
+  const LoginPages({super.key});
 
   static String id = 'LoginPage';
   @override

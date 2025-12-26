@@ -13,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
           if (data!.isEmpty) {
             return 'this feild are requried';
           }
+          return null;
         },
         onChanged: onchange,
         decoration: InputDecoration(
