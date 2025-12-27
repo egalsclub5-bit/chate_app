@@ -1,4 +1,5 @@
 import 'package:chat_app/firebase_options.dart';
+import 'package:chat_app/helper/firebase_helpe.dart';
 import 'package:chat_app/pages/chat_page.dart';
 import 'package:chat_app/pages/login_pages.dart';
 
@@ -25,7 +26,7 @@ class ChatApp extends StatelessWidget {
       },
 
       debugShowCheckedModeBanner: false,
-      initialRoute: LoginPages.id,
+      initialRoute: FirebaseHelpe.isLogin ? ChatPage.id : LoginPages.id,
     );
   }
 }

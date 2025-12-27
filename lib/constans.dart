@@ -5,3 +5,5 @@ const KPrimaryColor = Color(0xff2B475E);
 const KLogo = 'assets/images/scholar.png';
 const KpmessagesCollection = 'message';
 const KPmessage = 'message';
+const KPtime = 'date';
+const KPemail = 'id';

@@ -36,6 +36,7 @@ class _RegisterationPageState extends State<RegisterationPage> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
             key: formkey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -63,12 +64,37 @@ class _RegisterationPageState extends State<RegisterationPage> {
                   ],
                 ),
                 CustomTextFormField(
+                  validator: (data) {
+                    if (data == null || data.isEmpty) {
+                      return "this feild are requried";
+                    }
+                    final emailRegex = RegExp(
+                      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                    );
+                    if (!emailRegex.hasMatch(data)) {
+                      return "not valid email";
+                    }
+                    return null;
+                  },
                   onchange: (data) {
                     email = data;
                   },
                   textHint: 'Email',
                 ),
                 CustomTextFormField(
+                  validator: (data) {
+                    if (data == null || data.isEmpty) {
+                      return "this field is required";
+                    }
+
+                    final passwordRegex = RegExp(r'^(?=.*[a-zA-Z]).{8,}$');
+
+                    if (!passwordRegex.hasMatch(data)) {
+                      return "password must be at least 8 characters and contain at least 1 letter";
+                    }
+
+                    return null;
+                  },
                   onchange: (data) {
                     password = data;
                   },

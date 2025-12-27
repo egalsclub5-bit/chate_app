@@ -83,7 +83,7 @@ class _LoginPagesState extends State<LoginPages> {
                           email: email,
                           password: password,
                         );
-                        Navigator.pushNamed(context, ChatPage.id,arguments: email);
+                        Navigator.pushNamed(context, ChatPage.id);
 
                         showSnakBar(context, 'تم تسجيل الدخول بنجاح');
                       } on FirebaseAuthException catch (e) {
